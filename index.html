@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Calendar</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">YOUR PERSONAL SPACE</p>
+        <h1>My Calendar</h1>
+        <p class="subtitle">Mark important dates. Find them whenever you return.</p>
+      </div>
+      <button id="todayBtn" class="secondary">Today</button>
+    </header>
+
+    <section class="calendar-card">
+      <div class="calendar-toolbar">
+        <button id="prevBtn" class="icon-btn" aria-label="Previous month">‹</button>
+        <h2 id="monthLabel">Month Year</h2>
+        <button id="nextBtn" class="icon-btn" aria-label="Next month">›</button>
+      </div>
+      <div class="weekdays" aria-hidden="true">
+        <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
+      </div>
+      <div id="calendarGrid" class="calendar-grid" aria-label="Calendar dates"></div>
+      <div class="legend">
+        <span><i class="dot today-dot"></i> Today</span>
+        <span><i class="dot marked-dot"></i> Marked date</span>
+      </div>
+    </section>
+
+    <section class="details-card">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">DATE DETAILS</p>
+          <h2 id="selectedDateLabel">Select a date</h2>
+        </div>
+        <span id="savedBadge" class="saved-badge">Saved in this browser</span>
+      </div>
+      <form id="markForm">
+        <label for="noteInput">Your note or label <span>(optional)</span></label>
+        <input id="noteInput" type="text" maxlength="120" placeholder="e.g. Exam, birthday, deadline..." />
+        <div class="form-actions">
+          <button type="submit" id="saveBtn" class="primary">Save mark</button>
+          <button type="button" id="removeBtn" class="danger" hidden>Remove mark</button>
+        </div>
+      </form>
+      <p id="statusMessage" class="status" role="status"></p>
+    </section>
+
+    <section class="stats-card">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">MARKING SUMMARY</p>
+          <h2>Marked-day totals</h2>
+        </div>
+      </div>
+      <div class="stats-grid">
+        <article class="stat-tile">
+          <span class="stat-label" id="monthTotalLabel">This month</span>
+          <strong id="monthTotal" class="stat-number">0</strong>
+          <span class="stat-caption">marked days</span>
+        </article>
+        <article class="stat-tile">
+          <span class="stat-label">All time</span>
+          <strong id="allTimeTotal" class="stat-number">0</strong>
+          <span class="stat-caption">marked days saved</span>
+        </article>
+      </div>
+      <p class="stats-note">Counts are based on unique dates with a saved mark. The monthly total changes as you navigate between months.</p>
+    </section>
+
+    <section class="upcoming-card">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">YOUR SAVED DATES</p>
+          <h2>Marked dates</h2>
+        </div>
+        <span id="markCount" class="count-badge">0</span>
+      </div>
+      <div id="markedList" class="marked-list"></div>
+    </section>
+
+    <footer>
+      <p>Your marks are saved in this browser, even after you close the website.</p>
+      <p class="warning">Note: Clearing browser data or switching devices may remove or hide saved dates. Export a backup if the dates are important.</p>
+      <button id="exportBtn" class="secondary export-btn">Export backup (.json)</button>
+    </footer>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
